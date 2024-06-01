@@ -1,0 +1,14 @@
+Website Google Login
+
+Client ID
+505424149651-nvndnnj1p09immiur34t8t7tl4i1evok.apps.googleusercontent.com
+
+Client secret
+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
+
+
+Creation date
+28 May 2024 at 17:33:36 GMT+5
+
+
+505424149651-ggivjshvgurrpj23iuotrvvggb0ncetg.apps.googleusercontent.com
