@@ -43,114 +43,43 @@ const Extra = () => {
     { fieldName: 'marks', type: 'number' },
     { fieldName: 'category', type: 'dropdown' },
     { fieldName: 'nationality', type: 'switch' },
-  ]
+  ];
+
+  const fieldStudent = [
+    { fieldName: 'studentName', type: 'text', maxLength: 5, displayName: "Employee Name Employee Name Employee Name Employee Name Employee Name" },
+    { fieldName: 'rollNo', type: 'text' },
+    { fieldName: 'emailId', type: 'email' },
+    { fieldName: 'birthDate', type: 'date' },
+    { fieldName: 'marks', type: 'number' },
+    { fieldName: 'Division', type: 'number' },
+    { fieldName: 'category', type: 'dropdown', itemsSP: "" },
+    { fieldName: 'sportsQuota', type: 'switch' },
+  ];
+
+
+  const handleChange = (event) => {
+
+    console.log("changed", event.target.name);
+  }
+
+  const handleSubmit = (event, formData) => {
+    console.log("submitted", { ...formData, RowsAffecting: 1 });
+  }
 
   return (<div>
 
     <Label>Extra page</Label>
 
+    <DynamicForm heading="Dynamic Form" fields={fields} formOrientation="stacked" onChange={handleChange} onSubmit={handleSubmit} />
 
-    <DynamicForm heading="Dynamic Form" fields={fields} />
+    <hr />
 
+    <DynamicForm heading="Student Form" fields={fieldStudent} formOrientation="" onChange={handleChange} onSubmit={handleSubmit} />
 
-    <form style={{ marginTop: "3rem" }}>
+    <hr />
 
-      <hr />
+    <DynamicForm heading="Student Form" fields={fieldStudent} formOrientation="horizontal" onChange={handleChange} onSubmit={handleSubmit} />
 
-      <Field label="Favorite Fruit">
-        <RadioGroup id={radio} layout="horizontal" onChange={(ev, data) => console.log(data.value)}>
-          <Radio value="apple" label="Apple" />
-          <Radio value="pear" label="Pear" />
-          <Radio value="banana" label="Banana" />
-          <Radio value="orange" label="Orange" />
-        </RadioGroup>
-      </Field>
-      <hr />
-      <div className={styles.root}>
-        <div>
-          <Label size="medium" htmlFor="sample" className={styles.label} >
-            Sample
-          </Label>
-          <Input size="medium" id="sample" className={styles.input} />
-        </div>
-        <hr />
-        <Label size="large">Input types</Label>
-        <div>
-          <Label size="small" htmlFor="text" className={styles.label} >
-            Text (Default)
-          </Label>
-          <Input size="small" id="text" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="date" className={styles.label} >
-            Date
-          </Label>
-          <Input size="small" type="date" id="date" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="datetime" className={styles.label} >
-            DateTime Local
-          </Label>
-          <Input size="small" type="datetime-local" id="datetime" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="email" className={styles.label} >
-            Email
-          </Label>
-          <Input size="small" type="email" id="email" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="month" className={styles.label} >
-            Month
-          </Label>
-          <Input size="small" type="month" id="month" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="number" className={styles.label} >
-            Number
-          </Label>
-          <Input size="small" type="number" id="number" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="password" className={styles.label} >
-            Password
-          </Label>
-          <Input size="small" type="password" id="password" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="search" className={styles.label} >
-            Search
-          </Label>
-          <Input size="small" type="search" id="search" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="tel" className={styles.label} >
-            Tel
-          </Label>
-          <Input size="small" type="tel" id="tel" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="time" className={styles.label} >
-            Time
-          </Label>
-          <Input size="small" type="time" id="time" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="url" className={styles.label} >
-            Url
-          </Label>
-          <Input size="small" type="url" id="url" className={styles.input} />
-        </div>
-        <div>
-          <Label size="small" htmlFor="week" className={styles.label} >
-            Week
-          </Label>
-          <Input size="small" type="week" id="week" className={styles.input} />
-        </div>
-
-
-      </div>
-    </form>
   </div>);
 };
 

@@ -32,6 +32,7 @@ export const Navbar = () => {
         {user.username && <Link style={{ margin: "0.5rem" }} > <NavLink to="/profile">Profile</NavLink></Link>}
         {!user.username && <Link style={{ margin: "0.5rem" }} > <NavLink to="/login">Login</NavLink></Link>}
         <Link style={{ margin: "0.5rem" }} > <NavLink to="/extra">Extra</NavLink></Link>
+        <Link style={{ margin: "0.5rem" }} > <NavLink to="/controls">Controls</NavLink></Link>
         <Link style={{ margin: "0.5rem" }} > <NavLink to="/dashboard">Dashboard</NavLink></Link>
       </nav>
 

@@ -9,6 +9,9 @@ import Authorization from "./Authorization";
 import PERMISSIONS from "../permissions/permissions";
 import Extra from "../components/Extra";
 import Dashboard from "../components/Dashboard";
+import Controls from "../components/Controls";
+import Messages from "../components/Messages";
+import Tasks from "../components/Tasks";
 
 const RoutePath = () => {
   return (
@@ -31,15 +34,16 @@ const RoutePath = () => {
       >
         <Route path="messages" element={
           <Authentication>
-            <>Messages</>
+            <Messages />
           </Authentication>} />
         <Route path="tasks" element={<Authentication>
-          <>Tasks</>
+          <Tasks />
         </Authentication>} />
       </Route>
 
 
       <Route path="extra" element={<Extra />} />
+      <Route path="controls" element={<Controls />} />
 
       <Route path="login" element={<Login />} />
     </Routes>

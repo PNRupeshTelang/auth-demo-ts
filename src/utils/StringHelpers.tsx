@@ -28,8 +28,6 @@ export const getProperCaseWithSeparator = (str: string, separator: string) => {
 
     strings.push(properCase.substring(startIndex))
 
-    console.log(strings.join(separator));
-
     return strings.join(separator);
 }
 

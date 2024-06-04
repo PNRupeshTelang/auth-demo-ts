@@ -11,7 +11,7 @@ const useStyles = makeStyles({
         alignItems: "stretch",
         justifyContent: "space-between",
         flexDirection: "row",
-        gap: "2rem"
+        gap: "0.5rem"
     },
 
     label: {
@@ -22,44 +22,76 @@ const useStyles = makeStyles({
     }
 });
 
-export default ({ index, field }) => {
+export default ({ index, field, onChange }) => {
 
     const inputId = useId(`field-input-${field.fieldName}`);
 
     const styles = useStyles();
 
+    field = {
+        displayName: getProperCaseWithSpace(field.fieldName),
+        ...field,
+    }
+
     var inputProps: Partial<InputProps> = {
+        id: inputId,
+        className: styles.input,
         tabIndex: index,
+
+        placeholder: getProperCaseWithSpace(field.fieldName),
+        name: field.fieldName,
+        size: "medium",
         ...field
     };
 
     var dropdownProps: Partial<DropdownProps> = {
+        id: inputId,
+        className: styles.input,
+        tabIndex: index,
+        placeholder: getProperCaseWithSpace(field.fieldName),
+        name: field.fieldName,
+        size: "medium",
         label: getProperCaseWithSpace(field.fieldName),
         ...field
     }
 
     var switchProps: Partial<SwitchProps> = {
+        id: inputId,
+        className: styles.input,
+        tabIndex: index,
+        name: field.fieldName,
         label: getProperCaseWithSpace(field.fieldName),
         ...field
     }
 
+    var textProps = {
+        id: inputId,
+        className: styles.input,
+        tabIndex: index,
+        name: field.fieldName,
+    }
+
+
     const getInputField = (type) => {
         switch (type) {
             case "dropdwon":
-                return <Dropdown size="medium" id={inputId} className={styles.input} {...dropdownProps} />;
+                return <Dropdown {...dropdownProps} />;
 
             case "switch":
-                return <Switch size={2} id={inputId} className={styles.input} {...switchProps} />;
+                return <Switch {...switchProps} />;
+
+            case "simple":
+                return <input type="text" {...textProps} ></input>
 
             default:
-                return <Input size="medium" id={inputId} className={styles.input} {...inputProps} />;
+                return <Input {...inputProps} onChange={onChange} />;
         }
     }
 
     return (
         <Field className={styles.root}>
             <Label size="medium" htmlFor={inputId} className={styles.label} >
-                {getProperCaseWithSpace(field.fieldName)}
+                {field.displayName}
             </Label>
             {getInputField(field.type)}
         </Field>
