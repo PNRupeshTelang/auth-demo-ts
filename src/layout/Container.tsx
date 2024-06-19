@@ -1,6 +1,8 @@
 import { makeStyles, tokens, } from "@fluentui/react-components"
 
 import { NavLink } from "react-router-dom"
+import PantherNailsLogo from "../pnlogo.svg";
+import { preProcessFile } from "typescript";
 
 
 export const ScreenFull = (props) =>
@@ -30,20 +32,81 @@ export const Content = (props) => <div style={{
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-
-
 }}>
     {props.children}
 </div>
 // tw.div`basis-full bg-white`;
 
-export const LogoColumn = (props) => <div style={{ display: "flex", alignItems: "center", alignContent: "center" }}  >{props.children}</div>
+export const PageContent = (props) => {
+    return <div style={{
+        padding: "3rem 1rem",
+    }}>
+        {props.children}
+    </div>
+}
 
-export const ProfileColumn = (props) => <div style={{ display: "flex", alignItems: "center", alignContent: "center" }}>{props.children}</div>;
+export const TopBarContainer = (props) => {
+    return (
+        <div style={{
+            position: "fixed",
+            top: "0",
+            width: "98%",
+            zIndex: "20",
+            backgroundColor: tokens.colorNeutralBackground1,
+            padding: "0.5rem",
+            boxShadow: "0px 2px darkgray",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            alignContent: "center",
+        }}
+            {...props.styles}>
+            {props.children}
+        </div >
+    )
+}
+
+export const StatusBarContainer = (props) => {
+    return (
+        <div style={{
+            position: "fixed",
+            bottom: "0",
+            width: "98%",
+            zIndex: "20",
+            gap: "0.5rem",
+            backgroundColor: tokens.colorNeutralBackground1,
+            padding: "0.5rem",
+            boxShadow: "0px -2px darkgray",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            alignContent: "center",
+        }}>
+            {props.children}
+        </div>
+    )
+}
+
+export const LogoColumn = (props) => <div style={{
+    display: "flex",
+    alignItems: "center",
+    alignContent: "center",
+    gap: "0.5rem"
+}}  >{props.children}</div>
+
+export const ProfileColumn = (props) => <div style={{
+    display: "flex",
+    alignItems: "center",
+    alignContent: "center",
+    gap: "0.5rem",
+    margin: "0.125rem"
+}}>{props.children}</div>;
 
 export const MenuLink = (props) => <NavLink to={props.to} >{props.children}</NavLink>;
 
-export const CompanyLogo = (props) => <MenuLink to={props.to}><img src={props.src} alt={props.alt}></img></MenuLink>;
+export const CompanyLogo = (props) => <MenuLink to={props.to}><img style={{ height: (props.size || 1) + "rem" }} title="Home" src={PantherNailsLogo} alt={props.alt}></img></MenuLink>;
 
 
 // const Container = tw.div`flex justify-between items-center shadow `;

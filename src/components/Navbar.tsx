@@ -20,14 +20,6 @@ import {
 
 export const Navbar = () => {
   const { user } = useAuth();
-  const { setTheme, setLanguage } = useSession();
-
-  const onThemeChanged = (e) => {
-    setTheme((e.currentTarget.checked ? "webDarkTheme" : "webLightTheme"));
-  };
-
-
-
 
   return (
     <>
@@ -39,24 +31,8 @@ export const Navbar = () => {
         <Link style={{ margin: "0.5rem" }} > <NavLink to="/extra">Extra</NavLink></Link>
         <Link style={{ margin: "0.5rem" }} > <NavLink to="/controls">Controls</NavLink></Link>
         <Link style={{ margin: "0.5rem" }} > <NavLink to="/dashboard">Dashboard</NavLink></Link>
+        <Link style={{ margin: "0.5rem" }} > <NavLink to="/master">Master</NavLink></Link>
       </nav>
-
-
-      <div className="container">
-        <Switch label="Dark Mode" onClick={onThemeChanged} />
-      </div>
-
-      <div className="container">
-
-        <Button onClick={() => setLanguage("English")}>English</Button>
-        <Button onClick={() => setLanguage("Hindi")}>Hindi</Button>
-        <Button onClick={() => setLanguage("German")}>German</Button>
-        <Button onClick={() => setLanguage("French")}>French</Button>
-        <Button onClick={() => setLanguage("Japenese")}>Japenese</Button>
-
-      </div>
-
     </>
-
   );
 };

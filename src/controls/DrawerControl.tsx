@@ -15,6 +15,8 @@ import {
     DrawerFooter,
 } from "@fluentui/react-components";
 import { ArrowLeftRegular } from "@fluentui/react-icons";
+import { ArrowLeft, BundleIcon, BundleIconLink, Settings } from "./fluentui/PNAvatar";
+import { CompanyLogo } from "../layout/Container";
 
 const useStackClassName = makeResetStyles({
     display: "flex",
@@ -23,6 +25,10 @@ const useStackClassName = makeResetStyles({
 });
 
 export default ({ title, children, isOpen, setIsOpen, isShowFooter }) => {
+
+    const closeDrawer = () => setIsOpen(false)
+
+
     return (
         <OverlayDrawer
             open={isOpen}
@@ -35,20 +41,39 @@ export default ({ title, children, isOpen, setIsOpen, isShowFooter }) => {
             <DrawerHeader>
                 <DrawerHeaderTitle
                     action={
-                        <Button
-                            appearance="subtle"
-                            aria-label="Close"
-                            icon={<ArrowLeftRegular />}
-                            onClick={() => setIsOpen(false)}
-                        />
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignContent: "center",
+                            alignItems: "center",
+                            gap: "0.5rem"
+                        }}>
+                            <BundleIconLink to="dashboard">
+                                <Settings />
+                            </BundleIconLink>
+
+
+                            <Button
+                                appearance="subtle"
+                                aria-label="Close"
+                                icon={
+                                    <BundleIcon>
+                                        <ArrowLeft />
+                                    </BundleIcon>
+                                }
+                                onClick={() => setIsOpen(false)}
+                            />
+                        </div>
                     }
                 >
-                    {title}
+                    <CompanyLogo size={1.5} to="/" />
                 </DrawerHeaderTitle>
             </DrawerHeader>
 
             <DrawerBody>{children}</DrawerBody>
-            {isShowFooter && <DrawerFooter>Setting</DrawerFooter>}
+            {isShowFooter && <DrawerFooter>
+                <CompanyLogo size={2} />
+            </DrawerFooter>}
         </OverlayDrawer>
     );
 };

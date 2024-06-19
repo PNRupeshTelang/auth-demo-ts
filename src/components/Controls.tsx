@@ -1,8 +1,9 @@
 import React from "react";
 
-import { makeStyles, useId, Input, Label, Button, Body1, Body2, RadioGroup, Radio, Field, RadioGroupProps } from "@fluentui/react-components";
+import { makeStyles, useId, Input, Label, Button, Body1, Body2, RadioGroup, Radio, Field, RadioGroupProps, Switch } from "@fluentui/react-components";
 import FormInput from "../controls/DynamicField";
 import DynamicForm from "../controls/DynamicForm";
+import { useSession } from "../providers/SessionProvider";
 
 const useStyles = makeStyles({
   root: {
@@ -23,7 +24,13 @@ const useStyles = makeStyles({
 
 
 const Controls = () => {
+  const { setTheme, setLanguage } = useSession();
+
+  const onThemeChanged = (e) => {
+    setTheme((e.currentTarget.checked ? "webDarkTheme" : "webLightTheme"));
+  };
   const smallId = useId("input-small");
+
   const mediumId = useId("input-medium");
   const largeId = useId("input-large");
   const largeId2 = useId("input-large2");
@@ -138,6 +145,22 @@ const Controls = () => {
 
       </div>
     </form>
+
+    <div className="container">
+      <Switch label="Dark Mode" onClick={onThemeChanged} />
+    </div>
+
+    <div className="container">
+
+      <Button onClick={() => setLanguage("English")}>English</Button>
+      <Button onClick={() => setLanguage("Hindi")}>Hindi</Button>
+      <Button onClick={() => setLanguage("German")}>German</Button>
+      <Button onClick={() => setLanguage("French")}>French</Button>
+      <Button onClick={() => setLanguage("Japenese")}>Japenese</Button>
+
+    </div>
+
+
   </div>);
 };
 

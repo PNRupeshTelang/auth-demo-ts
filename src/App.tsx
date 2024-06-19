@@ -5,7 +5,8 @@ import { Button, FluentProvider, teamsDarkTheme, teamsHighContrastTheme, teamsLi
 import { useSession } from "./providers/SessionProvider";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import TopBar from "./controls/TopBar";
-import { Content, ScreenFull } from "./layout/Container";
+import { Content, PageContent, ScreenFull } from "./layout/Container";
+import StatusBar from "./controls/StatusBar";
 
 
 
@@ -29,9 +30,11 @@ const App = () => {
     <FluentProvider theme={getTheme()}>
       <ScreenFull>
         <TopBar isOpen={isOpen} setIsOpen={setIsOpen} />
-
-        <Navbar />
-        <RoutePath />
+        <PageContent>
+          <Navbar />
+          <RoutePath />
+        </PageContent>
+        <StatusBar />
       </ScreenFull>
     </FluentProvider>
   );

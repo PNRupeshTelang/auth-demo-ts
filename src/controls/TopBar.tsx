@@ -6,7 +6,7 @@ import MenuData from '../mockData/menu.json';
 
 import MenuLink from "./MenuLink";
 
-import { BundleIcon, PNAvatar } from "./fluentui/PNAvatar";
+import { BundleIcon, GridDots, Options, PNAvatar, Person, WindowShield } from "./fluentui/PNAvatar";
 
 import {
     tokens,
@@ -20,56 +20,61 @@ import {
     makeStyles,
     Menu,
     Badge,
+    Switch,
 } from "@fluentui/react-components";
 
-import {
-    bundleIcon,
-    AccessTimeFilled, AccessTimeRegular,
-    PersonFilled, PersonRegular,
-} from "@fluentui/react-icons";
-
 import Drawer from "./DrawerControl";
-import { CompanyLogo, Container, Content, LogoColumn, ProfileColumn } from "../layout/Container";
+import { CompanyLogo, Container, Content, LogoColumn, ProfileColumn, TopBarContainer } from "../layout/Container";
+import { useSession } from "../providers/SessionProvider";
 
-const AccessTime = bundleIcon(AccessTimeFilled, AccessTimeRegular);
-const Person = bundleIcon(PersonFilled, PersonRegular);
+
+
 
 
 export default (props) => {
+
+    const { setTheme, setLanguage } = useSession();
+
+    const onThemeChanged = (e) => {
+        setTheme((e.currentTarget.checked ? "webDarkTheme" : "webLightTheme"));
+    };
 
     console.log("menuData", MenuData);
 
     return (
         <>
-            <Container>
+            <TopBarContainer>
                 <LogoColumn>
-                    <div>
-                        <MoreVertical32Regular
-                            onClick={() => props.setIsOpen(!props.isOpen)}
-                            ascent={"blue"}
-                            className="cursor-pointer"
-                        />
-                    </div>
+                    <BundleIcon                        >
+                        <GridDots onClick={() => props.setIsOpen(!props.isOpen)} className="cursor-pointer" />
+                    </BundleIcon>
 
-                    <CompanyLogo to="/" />
-
-                    <Field>
-                        <Input type="search" placeholder="start typing to search..." />
-                    </Field>
+                    <CompanyLogo size={1.5} />
                 </LogoColumn>
 
+                <Field >
+                    <Input type="search" placeholder="start typing to search..." />
+                </Field>
 
                 <ProfileColumn>
+
+                    <Switch onClick={onThemeChanged} />
+
+                    <BundleIcon>
+                        <Person />
+                    </BundleIcon>
+                    <BundleIcon>
+                        <Options />
+                    </BundleIcon>
+
                     <MenuLink to="/profile">
                         <PNAvatar name="Rupesh Telang" shape="square" />
                     </MenuLink>
-                    <BundleIcon bundledIcon={<Person />} />
-
                 </ProfileColumn>
-            </Container>
+            </TopBarContainer>
 
             <Drawer
-                isShowFooter={true}
+                isShowFooter={false}
                 isOpen={props.isOpen}
                 setIsOpen={props.setIsOpen}
                 title={<Label size="large">One App</Label>}

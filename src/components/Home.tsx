@@ -107,7 +107,7 @@ const Home = () => {
     <button onClick={() => { queryParam.set('size', 'l'); setQueryParam(queryParam); }}>Large</button>
     <button onClick={() => { queryParam.set('size', 'xl'); setQueryParam(queryParam); localStorage.setItem('data', 'xl') }}>Extra Large</button>
 
-
+    {/* 
     <p>
       {JSON.stringify(components)}
     </p>
@@ -121,7 +121,7 @@ const Home = () => {
           )
         })
       }
-    </p>
+    </p> */}
 
     <p>{queryParam.get('color')}</p>
     <p>{queryParam.get('size')}</p>
