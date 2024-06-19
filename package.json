@@ -2,7 +2,7 @@
   "name": "auth-demo-ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://pnrupeshtelang.github.io",
+  "homepage": "https://pnrupeshtelang.github.io/auth-demo-ts/",
   "dependencies": {
     "@fluentui/react-components": "^9.53.0",
     "@react-oauth/google": "^0.12.1",

@@ -12,6 +12,7 @@ import { useApi } from '../hooks/useApi';
 import { encryptData, decryptData } from '../utils/Encryption';
 
 import encrypted from "../encrypted.json"
+import BreadCrumb from '../controls/fluentui/BreadCrumb';
 
 export class ISessionData {
   UserID: number;
@@ -40,15 +41,15 @@ const Home = () => {
   const { user, logout } = useAuth();
   const { theme, language } = useSession();
 
-  const [data] = useApi("WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
+
+  const data = useApi("Core.GMst_SelectFewFromMultipleTablesForMobileSplashScreen",
     JSON.stringify({
-      GroupName: 'pages',
-      SubGroupName: 'products',
-      PageName: 'loyalty',
+      ConfigurationNetwork: "Public"
     }),
     { Language: language, Theme: theme }
   );
 
+  const components = data[0].items;
 
   var session = {
     "CompanyID": "217",
@@ -94,6 +95,8 @@ const Home = () => {
     <h1>Welcome {user.username}</h1>
     <h1>Session {theme} {language}</h1>
 
+    <BreadCrumb />
+
     <UseTransitionDemo />
     <TransitionDemo />
 
@@ -104,6 +107,21 @@ const Home = () => {
     <button onClick={() => { queryParam.set('size', 'l'); setQueryParam(queryParam); }}>Large</button>
     <button onClick={() => { queryParam.set('size', 'xl'); setQueryParam(queryParam); localStorage.setItem('data', 'xl') }}>Extra Large</button>
 
+
+    <p>
+      {JSON.stringify(components)}
+    </p>
+    <p>
+      {
+        components.map((component, index) => {
+          return (
+            <p>
+              {component.ConfigurationName} : {component.ConfigurationValue}
+            </p>
+          )
+        })
+      }
+    </p>
 
     <p>{queryParam.get('color')}</p>
     <p>{queryParam.get('size')}</p>

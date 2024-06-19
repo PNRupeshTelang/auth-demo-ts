@@ -1,0 +1,82 @@
+[
+  {
+    "moduleName": "1 First ",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "2 Second",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "3 Third",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" },
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" },
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" },
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "4 Forth",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "5 Fifth",
+    "Menus": [
+      {
+        "Text": "Employee Master has child menu",
+        "Link": "employee",
+        "Child": [
+          { "Text": "Employee Master", "Link": "employee" },
+          { "Text": "Employee Master", "Link": "employee" }
+        ]
+      },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "6 Sixth",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "7 Seventh",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  },
+  {
+    "moduleName": "8 Eighth",
+    "Menus": [
+      { "Text": "Employee Master", "Link": "employee" },
+      { "Text": "Profile Master", "Link": "profile" },
+      { "Text": "Data Master", "Link": "data" }
+    ]
+  }
+]

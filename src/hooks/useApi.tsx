@@ -3,9 +3,6 @@ import session from "../session.json";
 import { useSession } from "../providers/SessionProvider";
 
 export function Execute(oFormData) {
-
-
-
     var sessionData = {
         CompanyID: session.CompanyID,
         SubscriberID: session.SubscriberID,
@@ -13,8 +10,6 @@ export function Execute(oFormData) {
         AppVersion: session.AppVersion,
         AppPlatform: session.AppPlatform,
     };
-
-
 
     var formData = {
         ...oFormData,
@@ -113,16 +108,12 @@ export function ExecuteFile(FormData) {
 
 
 export function useApi(ActionName, ParameterJSON, SessionData = null) {
-    const [data, setData] = useState(null);
-
+    const [data, setData] = useState({ DataIsLoaded: true, items: [], message: "" });
 
     useEffect(() => {
         ExecuteQuery({ ActionName, ParameterJSON, SessionDataJSON: SessionData }).then(json => {
-            var newData = json.items[0];
-            setData({ ...data, ...newData });
+            setData({ ...data, ...json });
         });
-
-
 
     }, [ActionName, ParameterJSON]);
 

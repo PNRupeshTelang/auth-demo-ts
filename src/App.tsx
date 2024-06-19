@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import RoutePath from "./routes/RoutePath";
 import { Button, FluentProvider, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from "@fluentui/react-components";
 import { useSession } from "./providers/SessionProvider";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import TopBar from "./controls/TopBar";
+import { Content, ScreenFull } from "./layout/Container";
 
 
 
@@ -21,12 +23,16 @@ const App = () => {
             theme === "teamsHighContrastTheme" ? teamsHighContrastTheme : webLightTheme;
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <FluentProvider theme={getTheme()}>
-      <div className="container">
+      <ScreenFull>
+        <TopBar isOpen={isOpen} setIsOpen={setIsOpen} />
+
         <Navbar />
         <RoutePath />
-      </div>
+      </ScreenFull>
     </FluentProvider>
   );
 };

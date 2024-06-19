@@ -12,6 +12,7 @@ import Dashboard from "../components/Dashboard";
 import Controls from "../components/Controls";
 import Messages from "../components/Messages";
 import Tasks from "../components/Tasks";
+import Master from "../components/Master";
 
 const RoutePath = () => {
   return (
@@ -42,6 +43,7 @@ const RoutePath = () => {
       </Route>
 
 
+      <Route path="master" element={<Master />} />
       <Route path="extra" element={<Extra />} />
       <Route path="controls" element={<Controls />} />
 
