@@ -54,7 +54,7 @@ export const TopBarContainer = (props) => {
             zIndex: "20",
             backgroundColor: tokens.colorNeutralBackground1,
             padding: "0.5rem",
-            boxShadow: "0px 2px darkgray",
+            boxShadow: tokens.shadow2,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",

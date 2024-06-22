@@ -6,7 +6,7 @@ import MenuData from '../mockData/menu.json';
 
 import MenuLink from "./MenuLink";
 
-import { BundleIcon, GridDots, Options, PNAvatar, Person, WindowShield } from "./fluentui/PNAvatar";
+import { BundleIcon, DarkMode, GridDots, Options, PNAvatar, Person, WindowShield } from "./fluentui/PNAvatar";
 
 import {
     tokens,
@@ -21,6 +21,8 @@ import {
     Menu,
     Badge,
     Switch,
+    ToggleButton,
+
 } from "@fluentui/react-components";
 
 import Drawer from "./DrawerControl";
@@ -32,18 +34,18 @@ import { useSession } from "../providers/SessionProvider";
 
 
 export default (props) => {
+    const { theme, setTheme, setLanguage } = useSession();
 
-    const { setTheme, setLanguage } = useSession();
+    const [themeChecked, setThemeChecked] = useState(false);
 
-    const onThemeChanged = (e) => {
-        setTheme((e.currentTarget.checked ? "webDarkTheme" : "webLightTheme"));
-    };
+
 
     console.log("menuData", MenuData);
 
     return (
         <>
             <TopBarContainer>
+
                 <LogoColumn>
                     <BundleIcon                        >
                         <GridDots onClick={() => props.setIsOpen(!props.isOpen)} className="cursor-pointer" />
@@ -58,20 +60,27 @@ export default (props) => {
 
                 <ProfileColumn>
 
-                    <Switch onClick={onThemeChanged} />
+                    <ToggleButton appearance="transparent" icon={<DarkMode />}
+                        onClick={() => {
+                            setThemeChecked(!themeChecked);
+                            setTheme((!themeChecked ? "teamsDarkTheme" : "teamsLightTheme"));
+                        }}
+                    ></ToggleButton>
 
-                    <BundleIcon>
-                        <Person />
-                    </BundleIcon>
                     <BundleIcon>
                         <Options />
                     </BundleIcon>
 
                     <MenuLink to="/profile">
                         <PNAvatar name="Rupesh Telang" shape="square" />
+
                     </MenuLink>
                 </ProfileColumn>
             </TopBarContainer>
+            <Container>
+
+            </Container>
+
 
             <Drawer
                 isShowFooter={false}

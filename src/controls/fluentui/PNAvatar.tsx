@@ -70,6 +70,9 @@ import {
     SettingsRegular,
     SettingsFilled,
 
+    WeatherSunnyRegular,
+    WeatherSunnyFilled,
+
     WindowShieldRegular,
     WindowShieldFilled,
 
@@ -95,6 +98,7 @@ export const WindowShield = bundleIcon(WindowShieldFilled, WindowShieldRegular);
 export const Person = bundleIcon(PersonFilled, PersonRegular);
 export const Settings = bundleIcon(SettingsFilled, SettingsRegular);
 export const ArrowLeft = bundleIcon(ArrowLeftFilled, ArrowLeftRegular);
+export const DarkMode = bundleIcon(WeatherSunnyFilled, WeatherSunnyRegular);
 
 
 const useClasses = makeStyles({
